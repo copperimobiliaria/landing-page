@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copper Imobilíaria</title>
-    <!-- CSS -->
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
     <link rel="stylesheet" href="style/style.css">
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Copper Imobilíaria</title>
 </head>
+<script>
+    mask = (i) =>{   
+        var v = i.value;
+        // impede entrar outro caractere que não seja número
+        if(isNaN(v[v.length-1])){ 
+           i.value = v.substring(0, v.length-1);
+           return;
+        }        
+        i.setAttribute("maxlength", "14");
+        if (v.length == 3 || v.length == 7) i.value += ".";
+        if (v.length == 11) i.value += "-";     
+    }
+
+    handleSubmit = () => {
+        const state = document.getElementById('state').value;
+        if(state === 'AC' || state === 'AM' || state === 'AP' || state === 'PA' || state === 'RO' || state === 'RR' || state === 'TO'){
+            alert('Infelizmente ainda não cobrimos a sua região!');
+        } else {
+            alert('Em breve retornaremos contato!');
+        }
+    }
+</script>
 <body>
+    <ul class="color1">
+        <a href="#event-1"><li>Home</li></a>
+        <a href="#detail-1"><li>Quem somos</li></a>
+        <a href="#detail-3"><li>Nosso trabalho</li></a>
+    </ul>
     <header id="event-1">
         <div id="page">
             <h2>Copper Imobiliária</h2>
@@ -23,46 +47,177 @@
                 Um novo jeito de comprar ou alugar seu imóvel
             </p>
             <p>Confira nossas novidades</p>
-            <p class="event-2">Efetue seu dacastro e surpreenda-se</p>
-
+            <p class="event-2">Efetue seu cadastro e surpreenda-se</p>
         </div>
+       
         <div id="subscription-form">
-            <p>Preecha o formulário que entraremos em contato</p>
             <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+            <p>Preecha o formulário que entraremos em contato</p>
+            
                 <input type=hidden name="oid" value="00D8V00000294OC">
-                <input type=hidden name="retURL" value="http://">
+                <input type=hidden name="retURL" value="https://copperimobiliaria.vercel.app/">
+
                 <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" name="name" placeholder="Digite seu nome">
+                    <label for="first_name">Primeiro Nome</label>
+                    <input id="first_name" maxlength="40" name="first_name" size="20" 
+                        type="text" placeholder="Digite seu primeiro nome" required/>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" placeholder="Digite seu e-mail">
+                    <label for="last_name">Sobrenome</label>
+                    <input id="last_name" maxlength="80" name="last_name" size="20" type="text" 
+                        placeholder="Digite seu sobrenome" required/>
+                </div>
+                <div class="form-group">
+                    <label for="company">Empresa</label>
+                    <input id="company" maxlength="40" name="company" size="20" type="text" 
+                        placeholder="Digite o nome da sua empresa" required/>
+                </div>
+                <div class="form-group">
+                    <label for="00N8V00000KS2zp">CPF</label>
+                    <input id="00N8V00000KS2zp" oninput="mask(this)" maxlength="14" name="00N8V00000KS2zp"
+                        size="20" type="text" placeholder="Digite seu CPF" required/>
                 </div>
                 <div class="form-group">
                     <label for="phone">Telefone</label>
-                    <input type="text" name="phone" placeholder="Número do Whatsapp">
+                    <input type="text" name="phone" placeholder="Número do Whatsapp" required>
                 </div>
                 <div class="form-group">
-                    <label for="interest">Selecione seu interesse</label>
-                    <select name="interest">
-                    <option value="" disable select>Selecione</option>
-                    <option value="Compra">Compra</option>
-                    <option value="Aluguel">Aluguel</option>
-                </select>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" placeholder="Digite seu e-mail" required>
                 </div>
                 <div class="form-group">
-                    <label for="interest">Selecione o tipo de imóvel</label>
-                    <select name="interest">
-                    <option value="" disable select>Selecione</option>
-                    <option value="house">Casas</option>
-                    <option value="apartament">Apartamentos</option>
-                </select>
+                    <label for="city">Cidade</label>
+                    <input id="city" maxlength="40" name="city" size="20" type="text" placeholder="Digite sua cidade" required>
                 </div>
-                <input type="submit" class="btn" value="Enviar cadastro">
+                <div class="form-group">
+                    <label for="state">Estado</label>
+                    <select id="state" name="state" title="Estado">
+                        <option value="">-- Nenhum --</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AM">AM</option>
+                        <option value="AP">AP</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>                        
+                        <option value="MG">MG</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="PR">PR</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SE">SE</option>
+                        <option value="SP">SP</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="00N8V00000KS312">Selecione seu interesse</label>
+                    <select id="00N8V00000KS312" name="00N8V00000KS312" title="Qual o seu interesse?">
+                        <option value="">-- Nenhum --</option>
+                        <option value="Aluguel">Aluguel</option>
+                        <option value="Compra">Compra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="00N8V00000KSH1D">Selecione o tipo de imóvel</label>
+                    <select  id="00N8V00000KSH1D" name="00N8V00000KSH1D" title="Selecione o tipo de imóvel">
+                        <option value="">-- Nenhum --</option>
+                        <option value="Apartamentos">Apartamento</option>
+                        <option value="Casas">Casa</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn" value="Enviar cadastro" onclick="handleSubmit()">
             </form>
-
         </div>
     </header>
+    <section id="key-benefits">
+        <h2 class="color-font"></h2>
+        <div class="benefits">
+            <div class="benefit">
+                <div id="benefit-1" class="benefit-img"></div>
+                <p>Luxo</p>
+            </div>
+            <div class="benefit">
+                <div id="benefit-2" class="benefit-img"></div>
+                <p>Design</p>
+            </div>
+            <div class="benefit">
+                <div id="benefit-3" class="benefit-img"></div>
+                <p>Padrão</p>
+            </div>
+        </div>
+    </section>
+    <section id="location">
+        <div id="address">
+            <i class="bi bi-geo-alt-fill"></i>
+        <div id="address-datails">
+            <p>Rua São José, 1333</p>
+            <p>Bairro Centro</p>
+            <p>Cidade: Guaíba</p>
+            <p>Estado: RS</p>
+        </div>
+        </div>    
+        <div id="about-location">
+            <h3>Horário de funcionamento:</h3>
+            <p>Segunda à Sábado</p>
+            <p>Das 8h às 18h</p>
+        </div>
+    </section>
+    <section id="details">
+        <div class="detail" id="detail-1">
+            <img src="https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660156530/16.jpg
+            " alt="Quem somos">
+            <div class="detail-description">
+                <h3>Quem somos</h3>
+                <p>A Copper Imobiliária atua no ramo imobiliário desde 2022, é uma empresa especializada em vendas e locações de imóveis residenciais, tendo como diferencial o atendimento personalizado e exclusivo à seus clientes.</p><br><br>
+                <h3>Nossa Missão</h3>
+                <p>Proporcionar ao nosso público a confiabilidade e o conforto em fechar negócios imobiliários, auxiliando-o para a melhor escolha, seja na compra e venda de imóveis ou o investimento desejado.</p>
+            </div>
+        </div>
+        <div class="detail" id="detail-2">
+            <div class="detail-description">
+                <h3>Visão</h3>
+                <p>Queremos ser a consultoria imobiliária mais eficaz e que melhor valoriza o cliente em seu atendimento diferenciado: inovador, personalizado; solicito; e eficiente.</p><br><br>
+                <h3>Valores</h3>
+                <p>Temos a ética e o respeito enraizado em nossa estrutura, em nossos colaboradores, parceiros e em todos aqueles envolvidos com a Copper Imobiliária.</p>
+            </div>
+            <img src="https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660156339/15.jpg" alt="Nosso trabalho">
+        </div>
+        <div class="detail" id="detail-3">
+            <img src="https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660156934/servicos.jpg" alt="Quem somos">
+            <div class="detail-description">
+                <h3>Nosso trabalho</h3>
+                <p>Atualmente, encontrar empresas que transmitam confiança, seriedade e segurança é algo raro, pois lidar com o mercado imobiliário é também lidar com pessoas e sonhos. Se faz necessário um atendimento humanizado: trabalhando com honestidade, respeito e ética.</p><br>
+                <h3>Assim como nossos clientes também sonhamos</h3>
+                <p>Queremos ser a consultoria mais eficaz do mercado, agindo sempre com transparência e com visão inovadora, visa primeiramente estudar o perfil do cliente, para então contribuir para o aumento de produtividade e lucratividade dos investimentos, bem como na compra e aluguel do imóvel que de fato atenda suas expectativas.</p>
+            </div>
+    </section>
+    <SECTION id="cta">
+        <h3>Encontre-nos também em nossas redes socias</h3>
+        <nav class="redes">
+            <ul>
+                <li>
+                    <a href="https://www.instagram.com/copper.imobiliaria/" target="_blank">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://chat.whatsapp.com/EKWidRDGzYYABrBT0nnD5f" target="_blank">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </SECTION>
 </body>
 </html>
