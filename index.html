@@ -10,30 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Copper Imobilíaria</title>
 </head>
-<script>
-    mask = (i) =>{   
-        var v = i.value;
-        // impede entrar outro caractere que não seja número
-        if(isNaN(v[v.length-1])){ 
-           i.value = v.substring(0, v.length-1);
-           return;
-        }        
-        i.setAttribute("maxlength", "14");
-        if (v.length == 3 || v.length == 7) i.value += ".";
-        if (v.length == 11) i.value += "-";     
-    }
-
-    handleSubmit = () => {
-        const state = document.getElementById('state').value;
-        if(state === 'AC' || state === 'AM' || state === 'AP' || state === 'PA' || state === 'RO' || state === 'RR' || state === 'TO'){
-            alert('Infelizmente ainda não cobrimos a sua região!');
-        } else {
-            alert('Em breve retornaremos contato!');
-        }
-    }
-</script>
 <body>
     <ul class="color1">
         <a href="#event-1"><li>Home</li></a>
@@ -56,6 +35,9 @@
             
                 <input type=hidden name="oid" value="00D8V00000294OC">
                 <input type=hidden name="retURL" value="https://copperimobiliaria.vercel.app/">
+                
+                <!-- Campo Origem do Lead: Necessário para segregar leads oriundos da landing page -->
+                <input type=hidden id="lead_source" name="lead_source" value="Web">
 
                 <div class="form-group">
                     <label for="first_name">Primeiro Nome</label>
@@ -74,12 +56,12 @@
                 </div>
                 <div class="form-group">
                     <label for="00N8V00000KS2zp">CPF</label>
-                    <input id="00N8V00000KS2zp" oninput="mask(this)" maxlength="14" name="00N8V00000KS2zp"
+                    <input id="00N8V00000KS2zp" maxlength="14" name="00N8V00000KS2zp"
                         size="20" type="text" placeholder="Digite seu CPF" required/>
                 </div>
                 <div class="form-group">
                     <label for="phone">Telefone</label>
-                    <input type="text" name="phone" placeholder="Número do Whatsapp" required>
+                    <input id="phone" type="tel" name="phone" placeholder="Número do Whatsapp" required>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
@@ -138,7 +120,7 @@
                         <option value="Casas">Casa</option>
                     </select>
                 </div>
-                <input type="submit" class="btn" value="Enviar cadastro" onclick="handleSubmit()">
+                <input type="submit" class="btn" name="submit" value="Enviar cadastro" onclick="handleSubmit()">
             </form>
         </div>
     </header>
@@ -215,5 +197,30 @@
             </a>
         </footer>
     
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#00N8V00000KS2zp').mask('000.000.000-00', {reverse: true});
+            var SPMaskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                },
+                spOptions = {
+                onKeyPress: function(val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                    }
+                };
+
+                $('#phone').mask(SPMaskBehavior, spOptions);
+            });
+        
+        handleSubmit = () => {
+            const state = document.getElementById('state').value;
+            if(state === 'AC' || state === 'AM' || state === 'AP' || state === 'PA' || state === 'RO' || state === 'RR' || state === 'TO'){
+                alert('Infelizmente ainda não cobrimos a sua região!');
+            } else {
+                alert('Em breve retornaremos contato!');
+            }
+        }
+    </script>
 </body>
 </html>
