@@ -114,14 +114,14 @@ li {
 
 /* Benefits section */
 #key-benefits h2 {
-    background-image: url(https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660153685/logo.jpg);
+    background-image: url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660153685/logo.jpg");
     text-align: center;
     padding: 3.4em;
     font-weight: 500;
 }
 
 .color1 {
-    background-image: url(https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660153685/logo.jpg);
+    background-image: url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660153685/logo.jpg");
     padding: 1.2em;
 }
 
@@ -156,15 +156,15 @@ li {
 }
 
 #benefit-1 {
-    background-image: url(https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660149356/1_affams.jpg);
+    background-image: url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660234950/1.jpg");
 }
 
 #benefit-2 {
-    background-image: url(https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660155106/5.jpg);
+    background-image: url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660155106/5.jpg");
 }
 
 #benefit-3 {
-    background-image: url(https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660155337/7.jpg);
+    background-image: url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660155337/7.jpg");
 }
 
 /* Location */
@@ -172,7 +172,7 @@ li {
 #location {
     height: 400px;
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660155762/11_hwpixm.jpg");
+    url("https://res.cloudinary.com/copper-imobiliaria/image/upload/v1660233148/11.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
