@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="style/case.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Copper Imobilíaria - Suporte</title>
+</head>
+<body>
+    <ul class="color1">
+        <a href="index.html"><li>Home</li></a>
+        <a href="index.html#detail-1"><li>Quem somos</li></a>
+        <a href="index.html#detail-3"><li>Nosso trabalho</li></a>
+        <a href="case.html"><li>Suporte ao cliente</li></a>
+    </ul>
+    <header id="event-1">
+        <div id="page">
+            <h2>Copper Imobiliária</h2>
+            <p class="about-event">
+                Um novo jeito de comprar ou alugar seu imóvel
+            </p>
+            <p>Confira nossas novidades</p>
+            <p class="event-2">Efetue seu cadastro e surpreenda-se</p>
+        </div>
+       
+        <div id="subscription-form">
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">    
+    <p>Suporte ao Cliente</p>
+        <input type=hidden name="orgid" value="00D8V00000294OC">
+        <input type=hidden name="retURL" value="https://copperimobiliaria.vercel.app/">
+
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input  id="name" maxlength="80" name="name" size="20" type="text" placeholder="Digite seu nome" required />
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input  id="email" maxlength="80" name="email" size="20" type="text" placeholder="Digite seu melhor e-mail" required />
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input  id="phone" maxlength="40" name="phone" size="20" type="text" placeholder="Digite seu melhor e-mail" required />
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Assunto</label>
+            <input  id="subject" maxlength="80" name="subject" size="20" type="text" placeholder="Digite o assunto" required />
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Descrição</label>
+            <textarea name="description" placeholder="Digite aqui a descrição do assunto" required></textarea>
+        </div>
+        
+   
+        <input type="submit" class="btn" value="Enviar" onclick="handleSubmit()"> 
+    </form>
+        </div>
+    </header>
+    
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var SPMaskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                },
+                spOptions = {
+                onKeyPress: function(val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                    }
+                };
+
+                $('#phone').mask(SPMaskBehavior, spOptions);
+            });
+        
+        handleSubmit = () => {
+            alert('Em até 24H retornaremos contato!');
+        }
+    </script>
+</body>
+</html>

@@ -15,9 +15,10 @@
 </head>
 <body>
     <ul class="color1">
-        <a href="#event-1"><li>Home</li></a>
+        <a href="index.html"><li>Home</li></a>
         <a href="#detail-1"><li>Quem somos</li></a>
         <a href="#detail-3"><li>Nosso trabalho</li></a>
+        <a href="case.html"><li>Suporte ao cliente</li></a>
     </ul>
     <header id="event-1">
         <div id="page">
@@ -31,13 +32,10 @@
        
         <div id="subscription-form">
             <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-                <p>Preencha o formulário que entraremos em contato</p>
+            <p>Preencha o formulário que entraremos em contato</p>
             
                 <input type=hidden name="oid" value="00D8V00000294OC">
                 <input type=hidden name="retURL" value="https://copperimobiliaria.vercel.app/">
-                
-                <!-- Campo Origem do Lead: Necessário para segregar leads oriundos da landing page -->
-                <input type=hidden id="lead_source" name="lead_source" value="Web">
 
                 <div class="form-group">
                     <label for="first_name">Primeiro Nome</label>
@@ -56,16 +54,16 @@
                 </div>
                 <div class="form-group">
                     <label for="00N8V00000KS2zp">CPF</label>
-                    <input id="00N8V00000KS2zp" maxlength="14" name="00N8V00000KS2zp"
-                        size="20" type="text" placeholder="Digite seu CPF"/>
+                    <input id="00N8V00000KS2zp" oninput="mask(this)" maxlength="14" name="00N8V00000KS2zp"
+                        size="20" type="text" placeholder="Digite seu CPF" required/>
                 </div>
                 <div class="form-group">
                     <label for="phone">Telefone</label>
-                    <input id="phone" type="tel" name="phone" placeholder="Número do Whatsapp">
+                    <input type="text" name="phone" placeholder="Número do Whatsapp" required>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" placeholder="Digite seu e-mail">
+                    <input type="email" name="email" placeholder="Digite seu e-mail" required>
                 </div>
                 <div class="form-group">
                     <label for="city">Cidade</label>
@@ -120,7 +118,7 @@
                         <option value="Casas">Casa</option>
                     </select>
                 </div>
-                <input type="submit" class="btn" name="submit" value="Enviar cadastro" onclick="handleSubmit()">
+                <input type="submit" class="btn" value="Enviar cadastro" onclick="handleSubmit()">
             </form>
         </div>
     </header>
@@ -196,7 +194,7 @@
                 <i class="bi bi-whatsapp"></i>
             </a>
         </footer>
-    
+    </section>
     <script src="js/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function(){
